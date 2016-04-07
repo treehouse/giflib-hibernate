@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('new category')"></head>
+<body>
+<div th:replace="layout :: nav"></div>
+<div th:replace="layout :: flash"></div>
+<div class="container">
+    <form>
+        <div class="row">
+            <div class="col s12">
+                <h2>New Category</h2>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col s12 l8">
+                <input type="text" placeholder="Category Name"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l8">
+                <select class="cs-select cs-skin-border">
+                    <option value="" disabled="disabled">Category Color</option>
+                    <option style="color:#59b3b3">Aqua</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l8">
+                <button type="submit" class="button">Add</button>
+                <a th:href="@{/categories}" class="button">Cancel</a>
+            </div>
+        </div>
+    </form>
+    <div class="row delete">
+        <div class="col s12 l8">
+            <form>
+                <button type="submit" class="button">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:replace="layout :: scripts"></div>
+</body>
+</html>

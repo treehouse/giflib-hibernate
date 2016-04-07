@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="layout :: head('upload')"></head>
+<body>
+<div th:replace="layout :: nav"></div>
+<div th:replace="layout :: flash"></div>
+<div class="container upload">
+    <div class="row">
+        <div class="col s12">
+            <h2>Upload</h2>
+            <div class="subtitle">Upload and share your GIFs with friends and family on Facebook, Twitter, and everywhere else.</div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <form>
+        <div class="row">
+            <div class="col s12 l8">
+                <div class="file-wrapper">
+                    <input type="file" id="file"/>
+                    <span class="placeholder" data-placeholder="Choose an image...">Choose an image...</span>
+                    <label for="file" class="button">Browse</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l8">
+                <input type="text" placeholder="Description"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 l8">
+                <select class="cs-select cs-skin-border">
+                    <option value="" disabled="disabled">Select a category</option>
+                    <option style="color:#59b3b3">Technology</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button type="submit" class="button">Upload</button>
+                <a href="javascript:window.location = document.referrer;" class="button">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:replace="layout :: scripts"></div>
+</body>
+</html>

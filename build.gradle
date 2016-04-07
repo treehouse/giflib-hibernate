@@ -1,0 +1,29 @@
+group 'com.teamtreehouse'
+version '1.0-SNAPSHOT'
+
+// Include the Spring Boot plugin
+buildscript {
+    repositories{
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.3.3.RELEASE'
+    }
+}
+
+// Apply the Spring Boot plugin
+apply plugin: 'spring-boot'
+
+// Apply the Java plugin (expects src/main/java to be source folder)
+apply plugin: 'java'
+
+// Specify the location where our dependencies will be found
+repositories {
+    mavenCentral()
+}
+
+// Specify dependencies
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    compile 'org.hashids:hashids:1.0.1'
+}

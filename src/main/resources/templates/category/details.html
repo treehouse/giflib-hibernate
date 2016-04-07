@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('categories')"></head>
+<body>
+    <div th:replace="layout :: nav"></div>
+    <div th:replace="layout :: searchbar"></div>
+    <div th:replace="layout :: flash"></div>
+    <div class="gifs container">
+        <h2 th:text="${category.name}" th:style="|color:${category.colorCode}|"></h2>
+        <div class="row">
+            <div th:each="gif : ${category.gifs}" class="col s12 l4">
+                <a th:href="@{|/gifs/${gif.id}|}">
+                    <img th:src="@{|/gifs/${gif.id}.gif|}" />
+                    <a href="#" th:class="(${gif.favorite}? 'un' : '') + 'mark favorite'"></a>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div th:replace="layout :: scripts"></div>
+</body>
+</html>

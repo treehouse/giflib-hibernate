@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head('categories')"></head>
+<body>
+    <div th:replace="layout :: nav"></div>
+    <div th:replace="layout :: searchbar"></div>
+    <div th:replace="layout :: flash"></div>
+    <div class="categories container">
+        <div class="row">
+            <div class="col s9">
+                <h2>Categories</h2>
+            </div>
+            <div class="col s3">
+                <a class="right add" href="/categories/add">+</a>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row">
+            <div th:each="cat : ${categories}" class="col s12 l4">
+                <div class="card" style="background-color:#59b3b3">
+                    <div class="card-content">
+                        <div class="card-title">
+                            <a class="name" th:href="@{|/categories/${cat.id}|}" th:text="${cat.name}">Category Name</a>
+                            <a class="edit" th:href="@{|/categories/${cat.id}/edit|}"><i class="hide-on-med-and-down material-icons">more_horiz</i><i class="hide-on-large-only medium material-icons">more_horiz</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="layout :: scripts"></div>
+</body>
+</html>
