@@ -17,7 +17,7 @@
         <div class="divider"></div>
         <div class="row">
             <div th:each="cat : ${categories}" class="col s12 l4">
-                <div class="card" style="background-color:#59b3b3">
+                <div class="card" th:style="|background-color:${cat.colorCode}|">
                     <div class="card-content">
                         <div class="card-title">
                             <a class="name" th:href="@{|/categories/${cat.id}|}" th:text="${cat.name}">Category Name</a>
