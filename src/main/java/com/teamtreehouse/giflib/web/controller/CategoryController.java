@@ -1,6 +1,7 @@
 package com.teamtreehouse.giflib.web.controller;
 
 import com.teamtreehouse.giflib.model.Category;
+import com.teamtreehouse.giflib.service.CategoryService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +17,14 @@ import java.util.List;
 @Controller
 public class CategoryController {
     @Autowired
-    private SessionFactory sessionFactory;
+    private CategoryService categoryService;
 
     // Index of all categories
     @SuppressWarnings("unchecked")
     @RequestMapping("/categories")
     public String listCategories(Model model) {
         // TODO: Get all categories
-        Session session = sessionFactory.openSession();
-        List<Category> categories = session.createCriteria(Category.class).list();
+        List<Category> categories = categoryService.findAll();
 
         model.addAttribute("categories",categories);
         return "category/index";
