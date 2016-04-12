@@ -119,11 +119,14 @@ public class GifController {
 
     // Delete an existing GIF
     @RequestMapping(value = "/gifs/{gifId}/delete", method = RequestMethod.POST)
-    public String deleteGif(@PathVariable Long gifId) {
+    public String deleteGif(@PathVariable Long gifId, RedirectAttributes redirectAttributes) {
         // TODO: Delete the GIF whose id is gifId
+        Gif gif = gifService.findById(gifId);
+        gifService.delete(gif);
+        redirectAttributes.addFlashAttribute("flash",new FlashMessage("GIF deleted!", FlashMessage.Status.SUCCESS));
 
         // TODO: Redirect to app root
-        return null;
+        return "redirect:/";
     }
 
     // Mark/unmark an existing GIF as a favorite
