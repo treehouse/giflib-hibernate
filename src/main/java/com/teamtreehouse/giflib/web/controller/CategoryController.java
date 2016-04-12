@@ -78,6 +78,9 @@ public class CategoryController {
     public String addCategory(@Valid Category category, BindingResult result, RedirectAttributes redirectAttributes) {
         // TODO: Add category if valid data was received
         if(result.hasErrors()) {
+            // Include validation errors upon redirect
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.category",result);
+
             // Add  category if invalid was received
             redirectAttributes.addFlashAttribute("category",category);
 
