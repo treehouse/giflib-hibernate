@@ -7,12 +7,13 @@
 <div class="container upload">
     <div class="row">
         <div class="col s12">
-            <h2>Upload</h2>
+            <h2 th:text="${heading}">Upload</h2>
             <div class="subtitle">Upload and share your GIFs with friends and family on Facebook, Twitter, and everywhere else.</div>
         </div>
     </div>
     <div class="divider"></div>
-    <form th:action="@{/gifs}" method="post" th:object="${gif}" enctype="multipart/form-data">
+    <form th:action="@{${action}}" method="post" th:object="${gif}" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}"/>
         <div class="row">
             <div class="col s12 l8">
                 <div class="file-wrapper">
@@ -37,7 +38,7 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <button type="submit" class="button">Upload</button>
+                <button th:text="${submit}" type="submit" class="button">Upload</button>
                 <a href="javascript:window.location = document.referrer;" class="button">Cancel</a>
             </div>
         </div>

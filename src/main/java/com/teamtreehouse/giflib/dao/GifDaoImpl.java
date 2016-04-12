@@ -35,7 +35,7 @@ public class GifDaoImpl implements GifDao {
     public void save(Gif gif) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save(gif);
+        session.saveOrUpdate(gif);
         session.getTransaction().commit();
         session.close();
     }
