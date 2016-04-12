@@ -12,11 +12,11 @@
         </div>
     </div>
     <div class="divider"></div>
-    <form>
+    <form th:action="@{/gifs}" method="post" th:object="${gif}" enctype="multipart/form-data">
         <div class="row">
             <div class="col s12 l8">
                 <div class="file-wrapper">
-                    <input type="file" id="file"/>
+                    <input type="file" id="file" name="file"/>
                     <span class="placeholder" data-placeholder="Choose an image...">Choose an image...</span>
                     <label for="file" class="button">Browse</label>
                 </div>
@@ -24,14 +24,14 @@
         </div>
         <div class="row">
             <div class="col s12 l8">
-                <input type="text" placeholder="Description"/>
+                <input type="text" th:field="*{description}" placeholder="Description"/>
             </div>
         </div>
         <div class="row">
             <div class="col s12 l8">
-                <select class="cs-select cs-skin-border">
+                <select th:field="*{category.id}" class="cs-select cs-skin-border">
                     <option value="" disabled="disabled">Select a category</option>
-                    <option style="color:#59b3b3">Technology</option>
+                    <option th:each="cat : ${categories}" th:value="${cat.id}" th:text="${cat.name}" th:style="|color:${cat.colorCode}|">Technology</option>
                 </select>
             </div>
         </div>

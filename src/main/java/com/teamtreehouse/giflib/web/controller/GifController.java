@@ -1,6 +1,8 @@
 package com.teamtreehouse.giflib.web.controller;
 
 import com.teamtreehouse.giflib.model.Gif;
+import com.teamtreehouse.giflib.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +12,8 @@ import java.util.List;
 
 @Controller
 public class GifController {
+    @Autowired
+    private CategoryService categoryService;
 
     // Home page - index of all GIFs
     @RequestMapping("/")
@@ -63,6 +67,8 @@ public class GifController {
     @RequestMapping("/upload")
     public String formNewGif(Model model) {
         // TODO: Add model attributes needed for new GIF upload form
+        model.addAttribute("gif",new Gif());
+        model.addAttribute("categories",categoryService.findAll());
 
         return "gif/form";
     }
