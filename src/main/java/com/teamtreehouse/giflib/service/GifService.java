@@ -10,4 +10,5 @@ public interface GifService {
     Gif findById(Long id);
     void save(Gif gif, MultipartFile file);
     void delete(Gif gif);
+    void toggleFavorite(Gif gif);
 }
