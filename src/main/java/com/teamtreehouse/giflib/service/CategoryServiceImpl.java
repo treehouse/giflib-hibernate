@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category findById(Long id) {
-        return null;
+        return categoryDao.findById(id);
     }
 
     @Override

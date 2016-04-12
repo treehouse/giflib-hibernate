@@ -60,7 +60,11 @@ public class CategoryController {
     // Form for editing an existing category
     @RequestMapping("categories/{categoryId}/edit")
     public String formEditCategory(@PathVariable Long categoryId, Model model) {
-        // TODO: Add model attributes needed for edit form
+        // TODO: Add model attributes needed for new form
+        if(!model.containsAttribute("category")) {
+            model.addAttribute("category",categoryService.findById(categoryId));
+        }
+        model.addAttribute("colors", Color.values());
 
         return "category/form";
     }
