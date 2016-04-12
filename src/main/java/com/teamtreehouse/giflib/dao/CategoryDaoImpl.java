@@ -1,6 +1,7 @@
 package com.teamtreehouse.giflib.dao;
 
 import com.teamtreehouse.giflib.model.Category;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class CategoryDaoImpl implements CategoryDao {
     public Category findById(Long id) {
         Session session = sessionFactory.openSession();
         Category category = session.get(Category.class,id);
+        Hibernate.initialize(category.getGifs());
         session.close();
         return category;
     }
@@ -56,6 +58,10 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Override
     public void delete(Category category) {
-
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(category);
+        session.getTransaction().commit();
+        session.close();
     }
 }

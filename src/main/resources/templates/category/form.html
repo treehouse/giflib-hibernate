@@ -35,9 +35,9 @@
             </div>
         </div>
     </form>
-    <div class="row delete">
+    <div class="row delete" th:id="${category.id != null}">
         <div class="col s12 l8">
-            <form>
+            <form th:action="@{|/categories/${category.id}/delete|}" method="post">
                 <button type="submit" class="button">Delete</button>
             </form>
         </div>
