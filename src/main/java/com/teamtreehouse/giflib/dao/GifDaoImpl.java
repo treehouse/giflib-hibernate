@@ -6,6 +6,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 @Repository
@@ -17,7 +19,21 @@ public class GifDaoImpl implements GifDao {
     @SuppressWarnings("unchecked")
     public List<Gif> findAll() {
         Session session = sessionFactory.openSession();
-        List<Gif> gifs = session.createCriteria(Gif.class).list();
+
+        // DEPRECATED as of Hibernate 5.2.0
+        // List<Gif> gifs = session.createCriteria(Gif.class).list();
+
+        // Create CriteriaBuilder
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+
+        // Create CriteriaQuery
+        CriteriaQuery<Gif> criteria = builder.createQuery(Gif.class);
+
+        // Specify criteria root
+        criteria.from(Gif.class);
+
+        // Execute query
+        List<Gif> gifs = session.createQuery(criteria).getResultList();
 
         session.close();
         return gifs;
